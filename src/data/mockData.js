@@ -1,0 +1,989 @@
+export const INITIAL_TEAMS = [
+  { id: 'team-denial', name: 'Denial Management Squad', shortName: 'Denial', lead: 'Quality & Operations Lead', color: 'indigo' },
+  { id: 'team-ar', name: 'Accounts Receivable (AR) Squad', shortName: 'AR', lead: 'Revenue Recovery Lead', color: 'emerald' },
+  { id: 'team-claim', name: 'Claim Submission Squad', shortName: 'Claim Submission', lead: 'Billing Dispatch Lead', color: 'violet' },
+  { id: 'team-checking', name: 'Checking & Quality Audit', shortName: 'Checking', lead: 'Compliance Lead', color: 'amber' }
+];
+
+export const INITIAL_STUDENTS = [
+  // ── COHORT 1: AR / Denial (File 2) ──────────────────────────────────────────
+  {
+    id: 'trainee-sri',
+    name: 'Sri Santhya',
+    empCode: 'MSS/666',
+    email: 'srisanthyas@applebillingcredentialing.com',
+    teamId: 'team-denial',
+    previousTeam: 'Claim Submission',
+    doj: '2025-06-19',
+    avatar: 'SS',
+    initialScore: 4.25,
+    finalScore: 10.0,
+    performanceStatus: 'Needs Support',
+    trainerComments: 'Need to improve communication, after the first review the final test explanation improved a little. Attitude and mindset - Good'
+  },
+  {
+    id: 'trainee-raj',
+    name: 'Raj Priyadarshini',
+    empCode: 'MSS/711',
+    email: 'rajpriyadarshinik@applebillingcredentialing.com',
+    teamId: 'team-denial',
+    previousTeam: 'Checking',
+    doj: '2025-09-08',
+    avatar: 'RP',
+    initialScore: 3.25,
+    finalScore: 10.5,
+    performanceStatus: 'Needs Support',
+    trainerComments: 'Low comprehension level, verbal communication needs improvement, attitude and mindset - average. After first review, final test explanations improved and mindset is Good'
+  },
+  {
+    id: 'trainee-jency',
+    name: 'Jency Suma',
+    empCode: 'MSS/678',
+    email: 'jencysumap@applebillingcredentialing.com',
+    teamId: 'team-denial',
+    previousTeam: 'Checking',
+    doj: '2025-07-24',
+    avatar: 'JS',
+    initialScore: 7.75,
+    finalScore: 12.0,
+    performanceStatus: 'Proficient',
+    trainerComments: 'Good understanding and able to communicate clearly. Good at comprehension. Mindset and Attitude - Very Good'
+  },
+  {
+    id: 'trainee-kiruthika',
+    name: 'Kiruthika',
+    empCode: 'MSS/683',
+    email: 'kiruthikas@applebillingcredentialing.com',
+    teamId: 'team-ar',
+    previousTeam: 'Claim Submission',
+    doj: '2025-07-24',
+    avatar: 'KR',
+    initialScore: 4.0,
+    finalScore: 10.1,
+    performanceStatus: 'Needs Support',
+    trainerComments: 'Need to improve the verbal communication, confusion of certain concepts, attitude is ok. After first review, final test explanations improved.'
+  },
+  {
+    id: 'trainee-rithina',
+    name: 'Rithina',
+    empCode: 'MSS/638',
+    email: 'rithinap@applebillingcredentialing.com',
+    teamId: 'team-ar',
+    previousTeam: 'Claim Submission',
+    doj: '2025-04-23',
+    avatar: 'RT',
+    initialScore: 8.0,
+    finalScore: 12.5,
+    performanceStatus: 'Proficient',
+    trainerComments: 'Good understanding and comprehension. Mindset and Attitude - Very Good'
+  },
+  // ── COHORT 2: Claim Submission (File 1 - 09/30/2026) ─────────────────────────
+  {
+    id: 'trainee-pradeep',
+    name: 'Pradeep Josebert',
+    empCode: 'MSS/694',
+    email: 'pradeepjoseberta@applebillingcredentialing.com',
+    teamId: 'team-denial',
+    previousTeam: 'Payment',
+    doj: '2025-08-12',
+    avatar: 'PJ',
+    initialScore: 8.5,
+    finalScore: 12.25,
+    performanceStatus: 'Proficient',
+    trainerComments: 'Good understanding, learning and listening capabilities. Faster and quick learner.'
+  },
+  {
+    id: 'trainee-manimekala',
+    name: 'Manimekala Vellachamy',
+    empCode: 'MSS/606',
+    email: 'manimekala@applebillingcredentialing.com',
+    teamId: 'team-denial',
+    previousTeam: 'Payment',
+    doj: '2025-01-04',
+    avatar: 'MV',
+    initialScore: 7.75,
+    finalScore: 0,
+    performanceStatus: 'Needs Support',
+    trainerComments: 'Improve clarity and confidence while writing'
+  },
+  {
+    id: 'trainee-deepa',
+    name: 'Deepa Raman',
+    empCode: 'MSS/511',
+    email: 'deeparaman@applebillingcredentialing.com',
+    teamId: 'team-ar',
+    previousTeam: 'Payment',
+    doj: '2024-01-31',
+    avatar: 'DR',
+    initialScore: 9.0,
+    finalScore: 0,
+    performanceStatus: 'Needs Support',
+    trainerComments: 'Able to grasp new information quickly. Shows a positive attitude toward learning and can pick up new skills.'
+  }
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXAMS — 4 total (2 per cohort)
+// ─────────────────────────────────────────────────────────────────────────────
+export const INITIAL_EXAMS = [
+  // ── EXAM 1: AR/Denial Initial (Max 10) ───────────────────────────────────────
+  {
+    id: 'exam-rcm-initial',
+    title: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    category: 'RCM Fundamentals — Initial Test',
+    durationMinutes: 15,
+    maxScore: 10,
+    cohort: 'AR / Denial',
+    examDate: '2026-09-29',
+    description: 'Initial benchmark evaluation covering deductibles (PR 1), ERA eligible payment methods, payer networks, EOB workflows, and CO 253 sequestration adjustments.',
+    questions: [
+      {
+        id: 'q-init-1',
+        text: 'What is Deductible (PR 1)?',
+        options: [
+          'A copay charged per specialist consultation',
+          'The specific out-of-pocket amount a patient must pay annually before health insurance begins to cover costs',
+          'A flat administrative charge deducted by the hospital',
+          'A penalty applied for out-of-network claims'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-2',
+        text: 'Which payment methods are eligible for ERA posting?',
+        options: [
+          'Cash vouchers only',
+          'Electronic Funds Transfer (EFT / ACH) and Non-payment postings',
+          'Store credits only',
+          'Foreign wire drafts without tracking'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-3',
+        text: 'Name at least four payer networks mentioned in the training document.',
+        options: [
+          'Paypal, Stripe, Square, ApplePay',
+          'Emory, Wellstar, Piedmont, CGHN / PHN',
+          'Visa, Mastercard, Amex, Discover',
+          'Cigna International, Bupa, Allianz, AXA only'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-4',
+        text: 'Who sends an EOB, and what information does it provide?',
+        options: [
+          'Sent by the patient to summarize symptoms',
+          'Sent by the payer/insurance company to the provider explaining how the claim was processed (allowed amounts, adjustments, patient responsibility)',
+          'Sent by the court to mandate collection actions',
+          'Sent by the credentialing team to verify addresses'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-5',
+        text: 'What is a patient statement?',
+        options: [
+          'A medical diagnosis summary for insurance pre-authorization',
+          'A financial communication document sent to the patient summarizing account activity and outstanding balance',
+          'A HIPAA consent privacy agreement',
+          'An internal doctor consultation note'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-6',
+        text: 'Why should the billing address be reviewed before posting an ERA?',
+        options: [
+          'To verify the patient home zip code',
+          'To ensure the ERA payment is posted to the correct provider account and avoid payment disruptions/misallocation',
+          'To calculate sales tax for medical services',
+          'To generate marketing promotional brochures'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-7',
+        text: 'What are the methods a patient statement can be generated?',
+        options: [
+          'Text SMS only',
+          'Paper-based statement and Electronic statement (e.g. via PMS / Healow portal)',
+          'Phone calls only',
+          'Physical courier hand delivery only'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-8',
+        text: 'What is Claim Adjustment Reason Code CO 253 (Sequestration)?',
+        options: [
+          'Duplicate billing submission denial',
+          'Sequestration — Mandatory Federal budget reduction for Medicare and managed care plans',
+          'Timely filing deadline expiration',
+          'Missing primary care referral authorization'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-9',
+        text: 'How will a Virtual Credit Card (VCC) payment be processed?',
+        options: [
+          'Post directly into the PMS as an EFT transaction without verification',
+          'VCCs should not be posted as-is; contact the payer via phone to request reissuance as Paper Check or EFT',
+          'Deposit immediately into employee petty cash',
+          'Decline the claim and write off the balance'
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 'q-init-10',
+        text: 'What is the purpose of the weekly payment report?',
+        options: [
+          'To calculate staff overtime hours',
+          'To monitor each client average target, predict cash flow trends, catch weekly lows, and meet monthly financial goals',
+          'To file state tax returns every week',
+          'To order medical office supplies'
+        ],
+        correctIndex: 1
+      }
+    ]
+  },
+
+  // ── EXAM 2: AR/Denial Final (Max 15) ─────────────────────────────────────────
+  {
+    id: 'exam-rcm-final',
+    title: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    category: 'RCM Operations — Final Test',
+    durationMinutes: 20,
+    maxScore: 15,
+    cohort: 'AR / Denial',
+    examDate: '2026-09-29',
+    description: 'Comprehensive 15-question evaluation on Patient Responsibility, ERA address mismatches, Virtual Cards, Contract Rates, Statement Cycles, TAT (48h), and CO 144.',
+    questions: [
+      {
+        id: 'q-fin-1',
+        text: '1. What is meant by patient responsibility in the statement process?',
+        options: ['Pre-service copays only', 'The specific out-of-pocket amount a patient must pay after insurance processes and adjudicates a claim', 'Total hospital overhead', 'Insurance contract discount'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-2',
+        text: '2. The billing address on an ERA does not match the practice\'s registered address. What are the next steps?',
+        options: ['Ignore the mismatch and post immediately', 'Notify the credentialing team via email to contact the payer and update the address', 'Cancel the provider license', 'Send the bill to the patient'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-3',
+        text: '3. A payer sends a virtual credit card payment. What action must be taken before posting?',
+        options: ['Swipe the card immediately', 'Contact the payer to request reissuance as EFT or Paper Check', 'Refund the payer in full', 'Hold in escrow for 90 days'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-4',
+        text: '4. What is the purpose of verifying the payer network/rate before posting?',
+        options: ['To verify doctor vacation dates', 'To ensure the allowed amount matches the payer contracted rate and prevent provider revenue loss', 'To recalculate physician salaries', 'To confirm patient insurance card color'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-5',
+        text: '5. What is the purpose of monitoring the number of statements sent to a patient?',
+        options: ['To track printing paper volume', 'To ensure statements follow standard protocol (up to 3 cycles) before moving accounts to DSEND or collections', 'To charge interest fees daily', 'To prevent patient phone calls'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-6',
+        text: '6. Why is it important to process EOBs within the expected turnaround time?',
+        options: ['To avoid software log accumulation', 'To maintain healthy practice cash flow, prevent revenue loss, and address claim denials promptly', 'To meet postal delivery limits', 'To close monthly fiscal years early'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-7',
+        text: '7. What is the required TAT for processing an EOB after it has been scanned into the system?',
+        options: ['7 to 14 days', '24 to 48 hours from the date scanned into the PMS', '30 calendar days', 'Same calendar month end'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-8',
+        text: '8. Why is it important to send patient statements promptly?',
+        options: ['To prevent paper shortages', 'To ensure timely patient payment collections, sustain cash flow, and minimize aging Accounts Receivable', 'To reduce email server storage', 'To satisfy bank loan covenants'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-9',
+        text: '9. What is the purpose of sending a patient statement?',
+        options: ['To advertise new medical clinic services', 'To provide clear financial communication of the remaining account balance after insurance adjudication', 'To provide prescriptions', 'To confirm upcoming clinical appointments'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-10',
+        text: '10. Why might an insurance payer take an offset from a current payment?',
+        options: ['To penalize late billing', 'To recover an overpayment made on a previous claim identified during insurance audits', 'To fund payer marketing campaigns', 'To pay for medical records courier fees'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-11',
+        text: '11. Why should patient balances be reviewed before generating statements?',
+        options: ['To ensure patients have good credit', 'To verify recent PMS payments, prevent duplicate statements, and eliminate billing mistakes', 'To check patient employment status', 'To apply arbitrary discounts'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-12',
+        text: '12. If the patient still does not pay after subsequent statements, what can be done?',
+        options: ['Discharge patient from medical care immediately', 'Transfer the account to Collections Agency or DSEND status based on provider protocol', 'File a legal lawsuit immediately', 'Write off 100% without review'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-13',
+        text: '13. Based on which policy can a patient account be submitted to collections or DSEND?',
+        options: ['City municipal court code', 'Provider and Client financial/statement cycle policy after 3 uncollected statements', 'Internal employee discretion', 'Insurance company guidelines'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-14',
+        text: '14. What is the client promise made by ABC (Apple Billing & Credentialing)?',
+        options: ['100% zero-cost billing services', 'To process all ERA and scanned EOBs within 48 hours Turnaround Time with high quality', '24/7 in-person call center', 'Automated claim approval without review'],
+        correctIndex: 1
+      },
+      {
+        id: 'q-fin-15',
+        text: '15. What is Claim Adjustment Code CO 144?',
+        options: ['Deductible non-covered penalty', 'Incentive Adjustment — Positive MIPS incentive adjustment for Medicare and managed care plans based on provider quality', 'Invalid diagnosis code denial', 'Duplicate payment refund request'],
+        correctIndex: 1
+      }
+    ]
+  },
+
+  // ── EXAM 3: Claim Submission 1st Assessment (Max 10) ─────────────────────────
+  {
+    id: 'exam-cs-initial',
+    title: 'Claim Submission Fundamentals — 1st Assessment',
+    category: 'Claim Submission — Initial Test',
+    durationMinutes: 15,
+    maxScore: 10,
+    cohort: 'Claim Submission',
+    examDate: '2026-09-30',
+    description: '10-question foundational assessment covering claim submission concepts, clearinghouse roles, batch management, payer IDs, and rejection types.',
+    questions: [
+      { id: 'q-cs1-1', text: '1. What is claim submission?', options: ['Filing paper forms only', 'The process of submitting claims electronically or manually to insurance payers for proper reimbursement', 'Collecting cash from patients', 'Scheduling patient appointments'], correctIndex: 1 },
+      { id: 'q-cs1-2', text: '2. Why are claims submitted twice a day?', options: ['To increase workload', 'To ensure all claims are submitted on time, avoid missing claims, reduce delays, and receive timely reimbursement', 'Because the system requires it', 'To meet printer capacity'], correctIndex: 1 },
+      { id: 'q-cs1-3', text: '3. What is the consequence of not submitting a claim?', options: ['No consequence', 'The claim may be delayed, rejected, denied or result in timely filing issues causing revenue loss', 'Automatic approval', 'Patient gets notified'], correctIndex: 1 },
+      { id: 'q-cs1-4', text: '4. Write the types of claim submission.', options: ['Only electronic', 'Electronic (EDI/clearinghouse), Online payer portal, and Manual (paper/fax) submission', 'Phone only', 'Walk-in submission only'], correctIndex: 1 },
+      { id: 'q-cs1-5', text: '5. In electronic claim submission, claims are transmitted through:', options: ['The US Postal Service', 'A clearinghouse', 'Direct mail', 'Fax machine only'], correctIndex: 1 },
+      { id: 'q-cs1-6', text: '6. What is the role of a clearinghouse?', options: ['To store patient medical records', 'To review claims for errors, validate information, and transmit claims to the appropriate payer to reduce rejections and speed reimbursement', 'To process insurance renewals', 'To schedule surgeries'], correctIndex: 1 },
+      { id: 'q-cs1-7', text: '7. Manual claim submission uses which form?', options: ['UB-92', 'CMS-1500 (HCFA) or UB-04', 'W-2 form', 'IRS 1040 form'], correctIndex: 1 },
+      { id: 'q-cs1-8', text: '8. What is manual claim submission?', options: ['Submitting via an app', 'Submitting paper CMS-1500 or UB-04 claim forms directly to the payer via mail or fax', 'Calling the insurance company', 'Scanning and emailing only'], correctIndex: 1 },
+      { id: 'q-cs1-9', text: '9. What is online payer portal submission?', options: ['Submitting claims via a third-party agency', 'Submitting claims directly through a payer\'s secure web portal without a clearinghouse', 'Mailing claims to a clearinghouse', 'Submitting via EDI 837'], correctIndex: 1 },
+      { id: 'q-cs1-10', text: '10. Which claim submission team task involves reviewing claims with system issues?', options: ['A. Charge entry', 'B. PMS error claims checking', 'C. Patient registration', 'D. Insurance verification'], correctIndex: 1 }
+    ]
+  },
+
+  // ── EXAM 4: Claim Submission Final Assessment (Max 15) ───────────────────────
+  {
+    id: 'exam-cs-final',
+    title: 'Claim Submission Advanced — Final Assessment',
+    category: 'Claim Submission — Final Test',
+    durationMinutes: 20,
+    maxScore: 15,
+    cohort: 'Claim Submission',
+    examDate: '2026-09-30',
+    description: '15-question comprehensive assessment on Payer IDs, clearinghouse workflow, batch management, rejection handling, HCFA printing, and why claim submission drives revenue.',
+    questions: [
+      { id: 'q-csf-1', text: '1. How many times should claims be submitted each day?', options: ['Once a day', 'Twice a day (1 PM and 4 PM) to ensure timely reimbursement and avoid missed batches', 'Three times a day', 'Once a week'], correctIndex: 1 },
+      { id: 'q-csf-2', text: '2. Which information is included in a claim?', options: ['Patient name only', 'Patient name, Member ID, DOS, DX/CPT codes, Insurance, Rendering Provider, Facility, Billed amount', 'Only the diagnosis code', 'Insurance card number only'], correctIndex: 1 },
+      { id: 'q-csf-3', text: '3. What is a Payer ID?', options: ['A patient identification number', 'A unique 5-digit numeric or alphanumeric identifier assigned to an insurance payer for electronic claim routing', 'A clearinghouse registration number', 'A billing software license code'], correctIndex: 1 },
+      { id: 'q-csf-4', text: '4. Payer ID is mainly required for:', options: ['Patient identification', 'Submitting the claim electronically through a clearinghouse to route it to the correct payer', 'Printing HCFA forms', 'Manual fax submission'], correctIndex: 1 },
+      { id: 'q-csf-5', text: '5. What is the purpose of a clearinghouse?', options: ['To store patient records', 'To review claims for errors, validate information, transmit to the correct payer, reduce rejections, and speed reimbursement', 'To process payroll', 'To manage doctor schedules'], correctIndex: 1 },
+      { id: 'q-csf-6', text: '6. What is a claim batch?', options: ['A single claim submission', 'A collection of multiple healthcare claims grouped together and submitted as a single electronic file for processing', 'A daily report', 'A patient invoice bundle'], correctIndex: 1 },
+      { id: 'q-csf-7', text: '7. If a batch is missing, what should we do?', options: ['Ignore it', 'Check the clearinghouse portal; if the batch is not found after the cutoff time, resubmit the batch', 'Contact the patient', 'Write it off'], correctIndex: 1 },
+      { id: 'q-csf-8', text: '8. If Payer ID is missing, what will happen?', options: ['The claim gets automatically approved', 'The claim cannot be submitted electronically; it must be submitted via alternative methods or the payer ID must be found first', 'The clearinghouse assigns a default ID', 'Nothing happens'], correctIndex: 1 },
+      { id: 'q-csf-9', text: '9. What is rejection and the types of rejection?', options: ['Claim approved with conditions', 'Rejection occurs when a clearinghouse or payer refuses to process a claim due to errors or missing info. Types: 1. Clearinghouse Rejection 2. Insurance Rejection', 'Claim partially paid', 'Claim sent to collections'], correctIndex: 1 },
+      { id: 'q-csf-10', text: '10. Why does insurance request medical records?', options: ['For marketing', 'To verify the patient\'s information, ensure medical necessity, and confirm the services billed before issuing payment', 'For auditing other providers', 'To update patient demographics'], correctIndex: 1 },
+      { id: 'q-csf-11', text: '11. Why are we adding Modifier 25 for E&M services?', options: ['To increase the billed amount', 'When E&M services and another procedure are billed on the same day, Modifier 25 indicates the E&M was a separately identifiable service', 'To bypass clearinghouse edits', 'Because the payer requires it for all claims'], correctIndex: 1 },
+      { id: 'q-csf-12', text: '12. What is the correct general sequence for rejection handling?', options: ['B. Resubmit → Identify → Correct → Verify', 'A. Identify → Correct → Verify → Resubmit', 'C. Verify → Resubmit → Identify → Correct', 'D. Correct → Identify → Resubmit → Verify'], correctIndex: 1 },
+      { id: 'q-csf-13', text: '13. Why are we doing Print HCFA?', options: ['For archiving only', 'When electronic or payer portal submission is not supported, the CMS-1500 (HCFA) paper claim form is printed and faxed or mailed to the payer', 'To send to the patient', 'For internal records only'], correctIndex: 1 },
+      { id: 'q-csf-14', text: '14. Which task should we prioritize first: faxing or printing the HCFA forms?', options: ['Printing first', 'Faxing first — it is faster and gets the document directly to the insurance company, reducing payment delays', 'Both at the same time', 'Neither; email instead'], correctIndex: 1 },
+      { id: 'q-csf-15', text: '15. Why is claim submission important?', options: ['It is optional', 'Claim submission is the primary mechanism for providers to receive payment from insurers. Without it, there is no revenue.', 'It is just paperwork', 'Only needed for Medicare'], correctIndex: 1 }
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SUBMISSIONS — 19 total (10 original + 9 new from Exam 3 & 4)
+// ─────────────────────────────────────────────────────────────────────────────
+export const INITIAL_SUBMISSIONS = [
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // EXAM 1: Medical Billing Fundamentals (Initial Test — Max 10)
+  // Cohort: AR/Denial | Date: 2026-09-29
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: 'sub-e1-jency',
+    studentId: 'trainee-jency',
+    studentName: 'Jency Suma',
+    email: 'jencysumap@applebillingcredentialing.com',
+    examId: 'exam-rcm-initial',
+    examTitle: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    examNumber: 1,
+    score: 7.75,
+    total: 10,
+    timeSpentSec: 360,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 02:03:44',
+    status: 'Pass',
+    answersDetail: {
+      'What is Deductible (PR 1)?': 'Deductible means a patient pay from out of pocket before the health insurance plan starts. For example if patient has $2000 annual deductible he must fully paid before the insurance plan starts',
+      'Which payment methods are eligible for ERA posting?': 'EFT - Electronic Fund Transfer',
+      'Name at least four payer networks': '1. Emory 2. Wellstar 3. Piedmont 4. CGHN 5. Direct',
+      'Who sends an EOB?': 'An EOB (Explanation of Benefits) sent by the payer to the provider through mail, It is a paper or PDF format explaining how the claim was processed, Like adjustments, denials, patient responsibility.',
+      'What is a patient statement?': 'A patient statement is a document sent to patient summarizing the patient account activity and outstanding balance.',
+      'Why should billing address be reviewed before posting ERA?': 'An address mismatch lead to payment disruption.',
+      'What are the methods a patient statement can be generated?': 'Patient outstanding amount sent as a statement for particular cycle like 30, 45, 60 days, for 3 times, after 3 times if amount is still unpaid it is moved to DSEND status and Collection policy',
+      'What is CO 253?': 'It is a standard Federal Tax Deduction for Medicare and their managed care plans issued by the CMS.',
+      'How will a Virtual Credit Card payment be processed?': 'Credit card payment have one time use number which is issued by the payer then processed by the provider',
+      'What is the purpose of the weekly payment report?': 'By sending weekly payment report we can monitor the each clients average target. Helps to predict the cash flow and works upon it.'
+    }
+  },
+  {
+    id: 'sub-e1-rithina',
+    studentId: 'trainee-rithina',
+    studentName: 'Rithina',
+    email: 'rithinap@applebillingcredentialing.com',
+    examId: 'exam-rcm-initial',
+    examTitle: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    examNumber: 1,
+    score: 8.0,
+    total: 10,
+    timeSpentSec: 350,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 02:03:51',
+    status: 'Pass',
+    answersDetail: {
+      'What is Deductible (PR 1)?': 'patient should pay the allowed amount annual',
+      'Which payment methods are eligible for ERA posting?': 'EFT /ACH',
+      'Name at least four payer networks': 'Emory, Wellstar, peidmont, PHN',
+      'Who sends an EOB?': 'The insurance company (payee) send the EOB to the health care provider. Which includes the billed amount, allowed amount adjustment or denied details. EOB is not a bill.',
+      'What is a patient statement?': 'Patient statement is financial communication from the provider to summarize. It includes what service was provided, insurance payment, adjustment, denial and patient responsibility.',
+      'Why should billing address be reviewed before posting ERA?': 'If the address is not be verified the payment was posted to another provider who did not see the patient.',
+      'What are the methods a patient statement can be generated?': 'Paper statement and Electronic statement',
+      'What is CO 253?': 'Sequestration - Federal tax mandatory. Applied to Medicare and managed care. Its not a denial or payer error.',
+      'How will a Virtual Credit Card payment be processed?': 'Credit card payments are not to be posted as is - it must be reissued as paper or EFT. Contact the company via phone to request reissue before posting.',
+      'What is the purpose of the weekly payment report?': 'To monitor the average cash flow to be met. The weekly report helps to catch the weekly low and meet the monthly average.'
+    }
+  },
+  {
+    id: 'sub-e1-raj',
+    studentId: 'trainee-raj',
+    studentName: 'Raj Priyadarshini',
+    email: 'rajpriyadarshinik@applebillingcredentialing.com',
+    examId: 'exam-rcm-initial',
+    examTitle: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    examNumber: 1,
+    score: 3.25,
+    total: 10,
+    timeSpentSec: 380,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 02:05:17',
+    status: 'Fail',
+    answersDetail: {
+      'What is Deductible (PR 1)?': 'Deductible is the amount the patient pays before insurance starts to pay',
+      'Which payment methods are eligible for ERA posting?': 'EFT',
+      'Name at least four payer networks': 'Emory, piedmont',
+      'Who sends an EOB?': 'EOB information insurance company sent to provider, How claim was processing.',
+      'What is a patient statement?': 'The claim process fully completed. Healthcare provider payment details sent to patient.',
+      'Why should billing address be reviewed before posting ERA?': 'Check the billing address to make sure the ERA payment is posted to the correct provider account',
+      'What are the methods a patient statement can be generated?': '-',
+      'What is CO 253?': 'Federal budget reducing',
+      'How will a Virtual Credit Card payment be processed?': 'Credentialing',
+      'What is the purpose of the weekly payment report?': 'Weekly report to verify whether we met the provider average amount'
+    }
+  },
+  {
+    id: 'sub-e1-kiruthika',
+    studentId: 'trainee-kiruthika',
+    studentName: 'Kiruthika',
+    email: 'kiruthikas@applebillingcredentialing.com',
+    examId: 'exam-rcm-initial',
+    examTitle: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    examNumber: 1,
+    score: 4.0,
+    total: 10,
+    timeSpentSec: 400,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 02:06:02',
+    status: 'Fail',
+    answersDetail: {
+      'What is Deductible (PR 1)?': 'The Insurance deducts the annual amount to the patient',
+      'Which payment methods are eligible for ERA posting?': 'ACH / EFT and Nonpayment posting',
+      'Name at least four payer networks': 'Peitmode, Emley, Direct, CGHI',
+      'Who sends an EOB?': 'Once the check payment was received and the client shares the EOB to the billing team to post the payment and settle the claim.',
+      'What is a patient statement?': 'The insurance coverage was not covered for the patient; the amount was patient responsibility and the statement was sent to the patient.',
+      'Why should billing address be reviewed before posting ERA?': 'The address has been changed making more time to receive the check. Once verified and corrected, email to credentialing team to get the correct address.',
+      'What are the methods a patient statement can be generated?': 'Paper based method',
+      'What is CO 253?': 'The federal Medicare and managed care was charged a particular percentage to collect the amount',
+      'How will a Virtual Credit Card payment be processed?': 'The card was collected by the provider and there was a one-time reference code generated for the claim payment.',
+      'What is the purpose of the weekly payment report?': 'To meet the weekly or monthly target of the collection payment. To compare the previous balance payment too.'
+    }
+  },
+  {
+    id: 'sub-e1-sri',
+    studentId: 'trainee-sri',
+    studentName: 'Sri Santhya',
+    email: 'srisanthyas@applebillingcredentialing.com',
+    examId: 'exam-rcm-initial',
+    examTitle: 'Medical Billing Fundamentals & ERA/EOB Posting',
+    examNumber: 1,
+    score: 4.25,
+    total: 10,
+    timeSpentSec: 420,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 02:06:51',
+    status: 'Fail',
+    answersDetail: {
+      'What is Deductible (PR 1)?': 'It is a particular amount that is annually deducted by the Contracted amount.',
+      'Which payment methods are eligible for ERA posting?': 'EFT Electronic Fund Transfer.',
+      'Name at least four payer networks': 'Wellstar, Piedmont, Emory, CGNH',
+      'Who sends an EOB?': 'It will be sent by the Provider\'s Office uploaded on the PMS and it contains the payment details and adjustments and balance amounts.',
+      'What is a patient statement?': 'It is a Paper format Document will be sent to the Patient Address about the Balance amount in the Claim {Patient Responsibility} Need to be paid by the patient',
+      'Why should billing address be reviewed before posting ERA?': 'The ERA will be having a Wrong billing address also the payment will not get into the Wrong Providers Billing Address',
+      'What are the methods a patient statement can be generated?': 'Patient Statements will be generated in a Paper Format',
+      'What is CO 253?': 'It is a Sequestration Amount — a particular amount that is deducted by the type of service provided to the patient',
+      'How will a Virtual Credit Card payment be processed?': 'It will also be processed as a paper Format; we have to notify the Payer to reinsurance and process as EOB Format',
+      'What is the purpose of the weekly payment report?': 'It will conclude whether the payment will be on a correct flow and the payment percentage will be averaging in the first half of the month'
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // EXAM 2: RCM Advanced Workflow & TAT (Final Test — Max 15)
+  // Cohort: AR/Denial | Date: 2026-09-29
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: 'sub-e2-jency',
+    studentId: 'trainee-jency',
+    studentName: 'Jency Suma',
+    email: 'jencysumap@applebillingcredentialing.com',
+    examId: 'exam-rcm-final',
+    examTitle: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    examNumber: 2,
+    score: 12.0,
+    total: 15,
+    timeSpentSec: 540,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 07:57:23',
+    status: 'Pass',
+    answersDetail: {
+      '1. Patient Responsibility': 'Patient responsibility means the specific amount a patient must pay from out of pocket, after insurance company processes and adjudicates a claim. It can be copay or coinsurance',
+      '2. Address Mismatch': 'If the billing address does not match the practice registered address, we need to update the current address. To update the address we must inform the credentialing team via Email.',
+      '3. Virtual Credit Card': 'Most common payment method is EFT and Paper check. Virtual credit card payment is difficult to process so we reissue the card payment to EFT or paper checks',
+      '4. Verify Payer Network Rate': 'Purpose of verifying payer network rate is to avoid payment loss. For example if payer allowed amount is $350 but we fix the billed amount as $200, there is a payment loss of $100.',
+      '5. Statement Monitoring': 'For each statement there is a certain amount provider needs to pay. We send maximum three statements after that it moves to DSEND status or collection policy.',
+      '6. EOB Turnaround Time': 'Processing Explanation of Benefits within the expected turnaround time is to maintain good cash flow and manage denials.',
+      '7. Required TAT': 'Turnaround Time for processing and posting a scanned EOB into a practice management system is 24 to 48 hours.',
+      '8. Prompt Patient Statements': 'Sending patient statements promptly for good cash flow and ensuring patients pay the amount on time.',
+      '9. Purpose of Statement': 'Patient statement is a financial communication explaining the balance amount which should be paid by the patient. The primary purpose is to clearly communicate a patient\'s financial responsibility after insurance processing.',
+      '10. Payer Offset / Overpayment': 'Insurance payer takes an offset from current payment because of overpayment of the previous claim. Insurance audits every year; if they find any overpayment they deduct the remaining amount from future claims.',
+      '11. Balance Review before Statement': 'Patient may pay the amount directly to the practice which is then scanned in PMS so we must check the PMS before sending statements',
+      '12. Delinquent Patient Accounts': 'If a patient payment remains unpaid after sending three statements it moves to DSEND or Collection status. Healow helps to send statements electronically.',
+      '13. Collections Policy': 'Healow helps to submit statements electronically.',
+      '14. ABC Client Promise': 'ABC commits to processing ERA and EOBs within the turnaround time which is 48 hours. The ERA and EOB must be processed from the date they are scanned.',
+      '15. CO 144': 'CO-144 — Incentive Adjustment — It is a positive adjustment made by MIPS for Medicare and managed care plans. It is based on the quality of service provided by the provider.'
+    }
+  },
+  {
+    id: 'sub-e2-rithina',
+    studentId: 'trainee-rithina',
+    studentName: 'Rithina',
+    email: 'rithinap@applebillingcredentialing.com',
+    examId: 'exam-rcm-final',
+    examTitle: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    examNumber: 2,
+    score: 12.5,
+    total: 15,
+    timeSpentSec: 510,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 08:02:54',
+    status: 'Pass',
+    answersDetail: {
+      '1. Patient Responsibility': 'Financial communication from healthcare provider that summarized patient account activity and informs the amount they are responsible.',
+      '2. Address Mismatch': 'Send an email to credentialing team to get a correct practice address.',
+      '3. Virtual Credit Card': 'Virtual credit card payment is not to be posted as it is. It must be reissued as paper or EFT. Should contact payer via phone to request reissue before posting.',
+      '4. Verify Payer Network Rate': 'Allowed amount for each CPT code must match with contract rate. If the allowed amount does not match, take action for reprocessing. It may create provider revenue loss.',
+      '5. Statement Monitoring': 'To collect payment.',
+      '6. EOB Turnaround Time': 'ABC made a commitment to the client to post EOB within 48 hours.',
+      '7. Required TAT': '48 hours from EOB received date.',
+      '8. Prompt Patient Statements': 'To collect payment',
+      '9. Purpose of Statement': 'To collect outstanding patient AR. To reduce patient confusion. To create more transparency to the patient.',
+      '10. Payer Offset / Overpayment': 'Due to overpayment for previous claims. For example Humana paid $400 on 07/01/2026. After reviewing the claim payer identified that was an overpayment of $200. The remaining balance was recovered from the next claim.',
+      '11. Balance Review before Statement': 'To avoid confusion.',
+      '12. Delinquent Patient Accounts': 'A patient account can be submitted to collections or DSEND',
+      '13. Collections Policy': 'A patient statement may be sent multiple times if the outstanding balance remains unpaid. The statement sends to collection team or DSEND status.',
+      '14. ABC Client Promise': 'Post the payment within 48 hours.',
+      '15. CO 144': 'CO 144 is a positive adjustment for provider service.'
+    }
+  },
+  {
+    id: 'sub-e2-raj',
+    studentId: 'trainee-raj',
+    studentName: 'Raj Priyadarshini',
+    email: 'rajpriyadarshinik@applebillingcredentialing.com',
+    examId: 'exam-rcm-final',
+    examTitle: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    examNumber: 2,
+    score: 10.5,
+    total: 15,
+    timeSpentSec: 490,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 07:58:26',
+    status: 'Pass',
+    answersDetail: {
+      '1. Patient Responsibility': 'Amount the patient needs to pay from their own pocket',
+      '2. Address Mismatch': 'Verify the address with the payer and update it, then reprocess the claim',
+      '3. Virtual Credit Card': 'Inform the insurance company to issue as paper check or EFT.',
+      '4. Verify Payer Network Rate': 'Ensure payment is posted at the correct amount',
+      '5. Statement Monitoring': 'Avoid sending duplicate statements to the patient.',
+      '6. EOB Turnaround Time': 'It is important to process EOB on time to avoid delays and get payment',
+      '7. Required TAT': 'Turnaround Time for processing an EOB after it has been scanned into the system is within 24 to 48 hours. Completing the claim prevents the provider from facing payment loss.',
+      '8. Prompt Patient Statements': 'Send patient statement promptly so the insurance company also sends EOB statement details; patient verifies both statements and pays for medical services',
+      '9. Purpose of Statement': 'Payment collection on time, Prevent aging the claim AR, Patient responsibility',
+      '10. Payer Offset / Overpayment': 'Deducting payment amount from the future claim.',
+      '11. Balance Review before Statement': 'Patients are charged the correct amount and avoid billing mistakes',
+      '12. Delinquent Patient Accounts': 'We sent three statements for the patient; if still not paid, claim is sent to collection or DSEND per client policy.',
+      '13. Collections Policy': 'Client policy: a patient account can be submitted to collections or DSEND.',
+      '14. ABC Client Promise': 'Reserved file — the whole process completing 24 to 48 hours with quality service.',
+      '15. CO 144': 'CO-144 is Incentive Adjustment — provider quality service met their threshold amount by CMS Medicare & managed care'
+    }
+  },
+  {
+    id: 'sub-e2-kiruthika',
+    studentId: 'trainee-kiruthika',
+    studentName: 'Kiruthika',
+    email: 'kiruthikas@applebillingcredentialing.com',
+    examId: 'exam-rcm-final',
+    examTitle: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    examNumber: 2,
+    score: 10.1,
+    total: 15,
+    timeSpentSec: 520,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 08:05:11',
+    status: 'Pass',
+    answersDetail: {
+      '1. Patient Responsibility': 'Insurance was not covered the plan of the service; it may be covered by patient, Copay, co-insurance, Deductible.',
+      '2. Address Mismatch': 'The address was not updated properly in the Insurance company side. Contact the credentialing team and fix it. Until corrected, credentialing will handle it.',
+      '3. Virtual Credit Card': 'Contact the insurance company directly via text or call. Confirm whether the payment type will change as paper format like check and EFT. If these modes are not possible then the final step the payment was processed as VCC payment.',
+      '4. Verify Payer Network Rate': 'Prevent incorrect payment or adjustments, Ensure the allowed amount matches the payer contracted rate, Reduce claims denials.',
+      '5. Statement Monitoring': 'It helps to identify that statements are sent regularly and the unpaid balance of the patient.',
+      '6. EOB Turnaround Time': 'It helps to collect the payment properly, the cashflow will be in the correct way, reduce denials and underpayment of the claim.',
+      '7. Required TAT': 'EOBs are scanned and sent by the provider, received in PMS and FAX, then downloaded and assigned to the particular team. Turnaround time is 48hrs.',
+      '8. Prompt Patient Statements': 'Helps timely collection of patient balances and improves cash flow and revenue cycle performance.',
+      '9. Purpose of Statement': 'To inform the patient about the amount for the medical service and the balance pending. Details are mentioned in the statements with the DOS and the provider name.',
+      '10. Payer Offset / Overpayment': 'The current payment recovers an amount that was previously overpaid to the provider. While auditing the claim they identified and took action.',
+      '11. Balance Review before Statement': 'The patient may complain to the provider; this affects the provider\'s goodwill ratings.',
+      '12. Delinquent Patient Accounts': 'The collection team takes over the claims and they collect the payment and settle the claim.',
+      '13. Collections Policy': 'At the time of the patient\'s appointment with the provider.',
+      '14. ABC Client Promise': '48hrs the claim will be processed to the insurance.',
+      '15. CO 144': 'Positive incentive given by CMS for Medicare and managed care plans. Merit-based Incentive Payment System (MIPS)'
+    }
+  },
+  {
+    id: 'sub-e2-sri',
+    studentId: 'trainee-sri',
+    studentName: 'Sri Santhya',
+    email: 'srisanthyas@applebillingcredentialing.com',
+    examId: 'exam-rcm-final',
+    examTitle: 'RCM Advanced Workflow, Patient Responsibility & Turnaround Time',
+    examNumber: 2,
+    score: 10.0,
+    total: 15,
+    timeSpentSec: 570,
+    date: '2026-09-29',
+    timestamp: '2026-09-29 08:07:49',
+    status: 'Pass',
+    answersDetail: {
+      '1. Patient Responsibility': 'The Patient Responsibility is the amount paid by the patient from his own pocket. Hence we are sending the Statement to the Patient.',
+      '2. Address Mismatch': 'The Registered address was not a match, then we send an email to the Credentialing team to inform the payer to correct the address in the ERA and reissue it.',
+      '3. Virtual Credit Card': 'The virtual card is sent by the payer; we are not to post the cashing details without client approval. We check and call the payer to inform that the payment will be processed as an EFT Format.',
+      '4. Verify Payer Network Rate': 'The purpose to check the payer network rate is to cross-check that the allowed amount is correctly posted on the claim for every line item.',
+      '5. Statement Monitoring': 'The patient statements also have a particular rate — every patient receives only 3 statements.',
+      '6. EOB Turnaround Time': 'We process the EOB within the particular time so the payment will be received by the provider on a correct schedule.',
+      '7. Required TAT': 'The turnaround time for EOB processing will be on the same day.',
+      '8. Prompt Patient Statements': 'The patient statements are the main purpose to collect the payment from the patient and handover it to the provider; also the outstanding balance percentage will be reduced.',
+      '9. Purpose of Statement': 'The purpose of sending a statement to the patient is to get the payment paid from the patient side and send it to the provider.',
+      '10. Payer Offset / Overpayment': 'An offset is when a payer mistakenly provides excess payment to that particular claim — for the same patient the next claim the payer will not provide that payment again.',
+      '11. Balance Review before Statement': 'The patient statement is only provided when the patient responsibility amount is due; we check the patient balance before generating the statement.',
+      '12. Delinquent Patient Accounts': 'We provide 3 statements to the patient and if they do not respond then we give the claim to a collection agency to follow and get the patient balance amount.',
+      '13. Collections Policy': 'Based on TAT policy: if the patient does not respond to the actions taken then we handover the claim to collections agency or DSEND — the DSEND process is concluded by the providers approval.',
+      '14. ABC Client Promise': 'We make the actions to get the payment in the claim within 48 hours.',
+      '15. CO 144': 'The CO 144 is a penalty for the provider if services are not enough for the patient — then only the penalty is concluded for the provider.'
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // EXAM 3: Claim Submission 1st Assessment (Max 10)
+  // Cohort: Claim Submission | Date: 2026-09-30
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: 'sub-e3-pradeep',
+    studentId: 'trainee-pradeep',
+    studentName: 'Pradeep Josebert',
+    email: 'pradeepjoseberta@applebillingcredentialing.com',
+    examId: 'exam-cs-initial',
+    examTitle: 'Claim Submission Fundamentals — 1st Assessment',
+    examNumber: 3,
+    score: 8.5,
+    total: 10,
+    timeSpentSec: 320,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 01:48:10',
+    status: 'Pass',
+    answersDetail: {
+      '1. What is claim submission?': 'Claim submission is the process of submitting the claim to insurance payer through electronic or manual submission.',
+      '2. Why are claims submitted twice a day?': 'Claims are submitted twice because to increase payment.',
+      '3. What is the consequence of not submitting a claim?': 'The consequence is the claim can get TFL or can get delay in payment.',
+      '4. Types of claim submission': 'Electronic (EDI), Online payer portal, Manual (paper/fax)',
+      '5. Claims are transmitted through:': 'A clearinghouse',
+      '6. What is the role of a clearinghouse?': 'To review claims for errors, validate information, and transmit to the appropriate payer. Helps reduce claim rejections, improve claim acceptance rates, and speed up the reimbursement process',
+      '7. Manual claim submission uses which form?': 'CMS-1500 (HCFA) or UB-04',
+      '8. What is manual claim submission?': 'Submitting paper CMS-1500 or UB-04 claim forms directly to the payer via mail or fax',
+      '9. What is online payer portal submission?': 'Submitting claims directly through a payer\'s secure web portal',
+      '10. Which task involves reviewing claims with system issues?': 'Mostly issues occur in Medical record submission; if any information is missed such as provider sign or patient demographics it can get denial as the document does not support it.'
+    }
+  },
+  {
+    id: 'sub-e3-jency',
+    studentId: 'trainee-jency',
+    studentName: 'Jency Suma',
+    email: 'jencysumap@applebillingcredentialing.com',
+    examId: 'exam-cs-initial',
+    examTitle: 'Claim Submission Fundamentals — 1st Assessment',
+    examNumber: 3,
+    score: 7.75,
+    total: 10,
+    timeSpentSec: 340,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 01:56:02',
+    status: 'Pass',
+    answersDetail: {
+      '1. What is claim submission?': 'Claim submission means, submitting claims electronically or manually to the insurance payers for proper reimbursement.',
+      '2. Why are claims submitted twice a day?': 'Claims submitted twice a day to avoid rejections, denials and payment delay for proper reimbursement.',
+      '3. What is the consequence of not submitting a claim?': 'The consequence of not submitting a claim to payer within the required time frame is lead to denial or complete rejection of the claim, which results in delay in payment.',
+      '4. Types of claim submission': 'Electronic, Online payer portal, Manual',
+      '5. Claims are transmitted through:': 'A clearinghouse',
+      '6. What is the role of a clearinghouse?': 'Clearing house purpose is to route the claims correctly to the insurance payer. Finding errors before submitting claims.',
+      '7. Manual claim submission uses which form?': 'CMS-1500',
+      '8. What is manual claim submission?': 'If batch is missing we check the encounter; if encounter found we need to get confirmation from the client.',
+      '9. What is online payer portal submission?': 'If a payer ID is missing we check all possible ways to find the payer ID; if still not found we check the clearinghouse.',
+      '10. Which task involves reviewing claims with system issues?': 'The task that specifically involves reviewing and resolving claims with system issues is called Clearinghouse Rejection team.'
+    }
+  },
+  {
+    id: 'sub-e3-manimekala',
+    studentId: 'trainee-manimekala',
+    studentName: 'Manimekala Vellachamy',
+    email: 'manimekala@applebillingcredentialing.com',
+    examId: 'exam-cs-initial',
+    examTitle: 'Claim Submission Fundamentals — 1st Assessment',
+    examNumber: 3,
+    score: 7.75,
+    total: 10,
+    timeSpentSec: 355,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 02:00:03',
+    status: 'Pass',
+    answersDetail: {
+      '1. What is claim submission?': 'Claim submitted electronically through a clearinghouse. Providers provide services - Clearinghouse - Insurances - Payment or Denial',
+      '2. Why are claims submitted twice a day?': 'To ensure all claims are submitted on time, avoid missing claims, reduce delays, receive timely reimbursement, and maintain a smooth workflow.',
+      '3. What is the consequence of not submitting a claim?': 'Not submitted in the claim may be Delayed payment; time filing issue can occur',
+      '4. Types of claim submission': 'Electronic, portal, manual',
+      '5. Claims are transmitted through:': 'Clearinghouse',
+      '6. What is the role of a clearinghouse?': 'Reduces claim errors and delays, speeds up processing, improves payment flow, and helps meet timely filing requirements.',
+      '7. Manual claim submission uses which form?': 'CMS-1500',
+      '8. What is manual claim submission?': 'Check the batch status. If it was not submitted, resubmit the batch.',
+      '9. What is online payer portal submission?': 'Check the clearinghouse first; if the claim was not submitted, manually post the claim.',
+      '10. Which task involves reviewing claims with system issues?': 'The major responsibility of the claim submission team is to verify patient demographics and insurance eligibility before submitting claims'
+    }
+  },
+  {
+    id: 'sub-e3-raj',
+    studentId: 'trainee-raj',
+    studentName: 'Raj Priyadarshini',
+    email: 'rajpriyadarshinik@applebillingcredentialing.com',
+    examId: 'exam-cs-initial',
+    examTitle: 'Claim Submission Fundamentals — 1st Assessment',
+    examNumber: 3,
+    score: 7.0,
+    total: 10,
+    timeSpentSec: 370,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 01:56:20',
+    status: 'Pass',
+    answersDetail: {
+      '1. What is claim submission?': 'Claims are accurately submitted and request payment from insurance/payer for provider services',
+      '2. Why are claims submitted twice a day?': 'Stable cash flow for provider; Do not miss the claim',
+      '3. What is the consequence of not submitting a claim?': 'The claim may be delayed or rejected and payment may not be received.',
+      '4. Types of claim submission': 'Electronic, manual, portal',
+      '5. Claims are transmitted through:': 'Clearinghouse',
+      '6. What is the role of a clearinghouse?': 'Reduce Rejection & denial, Prevent future claim issues, Time saving, Reducing manpower',
+      '7. Manual claim submission uses which form?': 'CMS-1500',
+      '8. What is manual claim submission?': 'If a batch is missing check clearinghouse portal; after 12pm if the batch is not shown in portal then resubmit the batch.',
+      '9. What is online payer portal submission?': 'Payer ID is missing or incorrect claim not submitted for insurance.',
+      '10. Which task involves reviewing claims with system issues?': 'Review the claim'
+    }
+  },
+  {
+    id: 'sub-e3-deepa',
+    studentId: 'trainee-deepa',
+    studentName: 'Deepa Raman',
+    email: 'deeparaman@applebillingcredentialing.com',
+    examId: 'exam-cs-initial',
+    examTitle: 'Claim Submission Fundamentals — 1st Assessment',
+    examNumber: 3,
+    score: 9.0,
+    total: 10,
+    timeSpentSec: 300,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 01:59:59',
+    status: 'Pass',
+    answersDetail: {
+      '1. What is claim submission?': 'Claim submission is the process of submitting medical billing claims electronically or manually to insurance payers for reimbursement.',
+      '2. Why are claims submitted twice a day?': 'To ensure all claims are submitted on time, avoid missing claims, reduce delays, receive timely reimbursement, and maintain a smooth workflow.',
+      '3. What is the consequence of not submitting a claim?': 'Not submitted in the claim may be Delayed payment; time filing issue can occur',
+      '4. Types of claim submission': 'Electronic (EDI), Online payer portal, Manual (CMS-1500/UB-04)',
+      '5. Claims are transmitted through:': 'A clearinghouse',
+      '6. What is the role of a clearinghouse?': '1. To reduce errors; 2. To reduce rejections; 3. Much faster to submit claims electronically.',
+      '7. Manual claim submission uses which form?': 'CMS-1500 or UB-04',
+      '8. What is manual claim submission?': 'If a batch is missing we have to verify it with clearinghouse and then if it is missed we have to resubmit the batches accordingly.',
+      '9. What is online payer portal submission?': 'If the payer ID has been missed we are not able to submit the claims electronically through the clearinghouse.',
+      '10. Which task involves reviewing claims with system issues?': 'Medical Record (MR) Task.'
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // EXAM 4: Claim Submission Final Assessment (Max 15)
+  // Cohort: Claim Submission | Date: 2026-09-30
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: 'sub-e4-pradeep',
+    studentId: 'trainee-pradeep',
+    studentName: 'Pradeep Josebert',
+    email: 'pradeepjoseberta@applebillingcredentialing.com',
+    examId: 'exam-cs-final',
+    examTitle: 'Claim Submission Advanced — Final Assessment',
+    examNumber: 4,
+    score: 12.25,
+    total: 15,
+    timeSpentSec: 480,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 07:32:24',
+    status: 'Pass',
+    answersDetail: {
+      '1. How many times should claims be submitted each day?': 'Should submit twice a day to get cash flow and regular payments',
+      '2. Which information is included in a claim?': 'Claim contains DX, CPT, DOS, payer information.',
+      '3. What is a Payer ID?': 'Payer ID is a five digit number used to process the claim',
+      '4. Payer ID is mainly required for:': 'The claim is sent to the correct payer.',
+      '5. Purpose of clearing house': 'Reduces claim errors and delays, speeds up processing, improves payment flow, and helps meet timely filing requirements.',
+      '6. What is a claim batch?': 'B. Collection of multiple claims',
+      '7. If a batch is missing, what should we do?': 'Check the batch status. If it was not submitted, resubmit the batch.',
+      '8. If Payer ID is Missing, what will happen?': 'Check the clearinghouse first; the claim was not submitted, manually post the claim.',
+      '9. What is rejection and type of rejection?': 'Clearinghouse rejection and insurance rejection',
+      '10. Why insurance requesting medical records?': 'Ensure the medical record is verified after the payment is received; accurate and supported by documentation',
+      '11. Why we are adding modifier 25 for E&M services?': 'Modifier 25 is used when an E/M service is separately identified from another procedure done on the same day.',
+      '12. What is the correct general sequence for rejection handling?': 'A. Identify → Correct → Verify → Resubmit',
+      '13. Why we are doing Print HCFA?': 'Verify the address, then check the HUB, demographic face sheet, and facility information. After confirmation, send the printed HCFA',
+      '14. Which task should we prioritize first: faxing or printing the HCFA forms?': 'The first to prioritize is fax',
+      '15. Why claim submission is important?': 'Submitting the claims is important because if we don\'t submit regularly, it may cause delay to get payment and reduce overflow in the overall process.'
+    }
+  },
+  {
+    id: 'sub-e4-jency',
+    studentId: 'trainee-jency',
+    studentName: 'Jency Suma',
+    email: 'jencysumap@applebillingcredentialing.com',
+    examId: 'exam-cs-final',
+    examTitle: 'Claim Submission Advanced — Final Assessment',
+    examNumber: 4,
+    score: 13.0,
+    total: 15,
+    timeSpentSec: 490,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 07:40:39',
+    status: 'Pass',
+    answersDetail: {
+      '1. How many times should claims be submitted each day?': 'Claims have been submitted twice a day.',
+      '2. Which information is included in a claim?': 'Provider name, location, DOS, CPT, Diagnosis, Insurance',
+      '3. What is a Payer ID?': 'Payer ID is a unique 5 digit numeric or alphanumeric number for an insurance payer.',
+      '4. Payer ID is mainly required for:': 'Payer ID is mainly required for submitting claim electronically through clearinghouse.',
+      '5. Purpose of clearing house': 'Clearing house purpose is to route the claims correctly to the insurance payer. Finding errors before submitting claims.',
+      '6. What is a claim batch?': 'B. Collection of multiple claims',
+      '7. If a batch is missing, what should we do?': 'If batch is missing we check the encounter; if encounter is found we need to get confirmation from the client.',
+      '8. If Payer ID is Missing, what will happen?': 'If a payer ID is missing we check all possible ways to find it; if still not found we check the clearinghouse.',
+      '9. What is rejection and type of rejection?': 'Claims get rejected due to errors or missing information. Types: 1. Clearing house Rejection 2. Insurance Rejection',
+      '10. Why insurance requesting medical records?': 'If the claim needs additional supporting documents to issue payment, insurance requests medical records to reprocess the claim.',
+      '11. Why we are adding modifier 25 for E&M services?': 'When other procedures are billed with E&M services we need to add 25 Modifier to specify the services provided by the provider.',
+      '12. What is the correct general sequence for rejection handling?': 'A. Identify → Correct → Verify → Resubmit',
+      '13. Why we are doing Print HCFA?': 'If electronic or online payer portal submission is not supported, we need to do print HCFA which is a paper claim form.',
+      '14. Which task should we prioritize first: faxing or printing the HCFA forms?': 'Faxing. Reason: Print HCFA takes more time which results in delayed payment.',
+      '15. Why claim submission is important?': 'If we do not submit the claim, there is no payment which results in revenue loss — we may lose the client.'
+    }
+  },
+  {
+    id: 'sub-e4-manimekala',
+    studentId: 'trainee-manimekala',
+    studentName: 'Manimekala Vellachamy',
+    email: 'manimekala@applebillingcredentialing.com',
+    examId: 'exam-cs-final',
+    examTitle: 'Claim Submission Advanced — Final Assessment',
+    examNumber: 4,
+    score: 0,
+    total: 15,
+    timeSpentSec: 0,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 07:52:36',
+    status: 'Absent',
+    answersDetail: {}
+  },
+  {
+    id: 'sub-e4-raj',
+    studentId: 'trainee-raj',
+    studentName: 'Raj Priyadarshini',
+    email: 'rajpriyadarshinik@applebillingcredentialing.com',
+    examId: 'exam-cs-final',
+    examTitle: 'Claim Submission Advanced — Final Assessment',
+    examNumber: 4,
+    score: 0,
+    total: 15,
+    timeSpentSec: 0,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 07:52:40',
+    status: 'Absent',
+    answersDetail: {}
+  },
+  {
+    id: 'sub-e4-deepa',
+    studentId: 'trainee-deepa',
+    studentName: 'Deepa Raman',
+    email: 'deeparaman@applebillingcredentialing.com',
+    examId: 'exam-cs-final',
+    examTitle: 'Claim Submission Advanced — Final Assessment',
+    examNumber: 4,
+    score: 0,
+    total: 15,
+    timeSpentSec: 0,
+    date: '2026-09-30',
+    timestamp: '2026-09-30 07:52:44',
+    status: 'Absent',
+    answersDetail: {}
+  }
+];
+
+export const COHORT_SUMMARY = {
+  totalTrainees: 8,
+  cohortAvgScore: 6.5,
+  highestScore: 9.0,
+  benchmarkPassRate: 0.625,
+  targetTeamBreakdown: [
+    { team: 'Denial Management', headcount: 5, sharePct: 62.5 },
+    { team: 'Accounts Receivable (AR)', headcount: 3, sharePct: 37.5 },
+    { team: 'Other / Unassigned', headcount: 0, sharePct: 0 }
+  ]
+};

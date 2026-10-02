@@ -1,0 +1,13 @@
+{
+  "database": "AssessPulse_RCM_Enterprise",
+  "version": "4.0",
+  "organization": "Apple Billing & Credentialing (ABC)",
+  "totalTrainees": 5,
+  "cohortAverageScore": 4.9,
+  "highestScore": 7.25,
+  "benchmarkPassRate": 0.4,
+  "teamsCount": 4,
+  "examsCount": 2,
+  "submissionsCount": 10,
+  "status": "Synchronized"
+}
