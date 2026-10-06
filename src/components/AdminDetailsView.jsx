@@ -227,7 +227,7 @@ export default function AdminDetailsView({ onResetData, onClearSubmissions, onFo
               <i className="fa-solid fa-database text-amber-600"></i> Local Database Management
             </div>
             <p className="text-[11px] text-amber-700 leading-relaxed">
-              Google Forms RCM dataset (5 trainees, 10 submissions, verbatim answers) is stored locally in IndexedDB & localStorage. You can re-sync or reset anytime.
+              Google Forms RCM dataset (8 trainees, 20 submissions across 4 exams, verbatim answers) is stored locally in IndexedDB & localStorage. You can re-sync or reset anytime.
             </p>
             <div className="space-y-2">
               <button

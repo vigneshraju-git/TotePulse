@@ -1,13 +1,17 @@
 {
   "database": "AssessPulse_RCM_Enterprise",
-  "version": "4.0",
+  "version": "5.0",
   "organization": "Apple Billing & Credentialing (ABC)",
-  "totalTrainees": 5,
-  "cohortAverageScore": 4.9,
-  "highestScore": 7.25,
-  "benchmarkPassRate": 0.4,
+  "totalTrainees": 8,
+  "cohorts": [
+    "AR / Denial",
+    "Claim Submission"
+  ],
+  "cohortAverageScore": 8.1,
+  "highestScore": 13.0,
+  "benchmarkPassRate": 0.85,
   "teamsCount": 4,
-  "examsCount": 2,
-  "submissionsCount": 10,
+  "examsCount": 4,
+  "submissionsCount": 20,
   "status": "Synchronized"
 }

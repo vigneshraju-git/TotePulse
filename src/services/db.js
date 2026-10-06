@@ -1,6 +1,6 @@
 import { INITIAL_TEAMS, INITIAL_STUDENTS, INITIAL_EXAMS, INITIAL_SUBMISSIONS, COHORT_SUMMARY } from '../data/mockData';
 
-const DB_VERSION_KEY = 'assesspulse_db_version_rcm_v7_4exams';
+const DB_VERSION_KEY = 'assesspulse_db_version_rcm_v9_full_production';
 
 const KEYS = {
   SUBMISSIONS: 'assesspulse_db_rcm_submissions',
